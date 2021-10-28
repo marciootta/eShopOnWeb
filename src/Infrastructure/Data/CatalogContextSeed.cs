@@ -61,7 +61,7 @@ namespace Microsoft.eShopWeb.Infrastructure.Data
                 new CatalogBrand("Azure"),
                 new CatalogBrand(".NET"),
                 new CatalogBrand("Visual Studio"),
-                new CatalogBrand("SQL Server"),
+                new CatalogBrand("SQL Server","Devops only!"),
                 new CatalogBrand("Other")
             };
         }
