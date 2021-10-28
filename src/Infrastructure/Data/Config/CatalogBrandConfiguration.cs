@@ -17,6 +17,9 @@ namespace Microsoft.eShopWeb.Infrastructure.Data.Config
             builder.Property(cb => cb.Brand)
                 .IsRequired()
                 .HasMaxLength(100);
+            builder.Property(cb => cb.Notes)
+                .HasMaxLength(200);
+
         }
     }
 }
