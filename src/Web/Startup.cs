@@ -1,7 +1,5 @@
 ﻿using Ardalis.ListStartupServices;
-using BlazorAdmin;
-using BlazorAdmin.Services;
-using Blazored.LocalStorage;
+ 
 using BlazorShared;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
@@ -155,11 +153,11 @@ namespace Microsoft.eShopWeb.Web
             });
 
             // add blazor services
-            services.AddBlazoredLocalStorage();
-            services.AddServerSideBlazor();
+            //services.AddBlazoredLocalStorage();
+            //services.AddServerSideBlazor();
 
-            services.AddScoped<HttpService>();
-            services.AddBlazorServices();
+            //services.AddScoped<HttpService>();
+            //services.AddBlazorServices();
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
