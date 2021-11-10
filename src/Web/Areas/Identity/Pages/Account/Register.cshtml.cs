@@ -55,6 +55,10 @@ namespace Microsoft.eShopWeb.Web.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            
+            [Display(Name ="Nome da Sogra")]
+            [StringLength(100, ErrorMessage ="O nome da sogra é no máximo 100")]
+            public string NomeSogra { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -67,7 +71,7 @@ namespace Microsoft.eShopWeb.Web.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, NomeDaSogra="Semsogra" };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, NomeSogra=Input.NomeSogra };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
