@@ -1,10 +1,11 @@
 ﻿using MediatR;
+using Microsoft.eShopWeb.Web.Pages.Orders;
 using Microsoft.eShopWeb.Web.ViewModels;
 using System.Collections.Generic;
 
 namespace Microsoft.eShopWeb.Web.Features.MyOrders
 {
-    public class GetMyOrders : IRequest<IEnumerable<OrderViewModel>>
+	public class GetMyOrders : IRequest<IEnumerable<OrderViewModel>>
     {
         public string UserName { get; set; }
 

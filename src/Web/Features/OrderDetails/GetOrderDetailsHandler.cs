@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 using Microsoft.eShopWeb.ApplicationCore.Specifications;
+using Microsoft.eShopWeb.Web.Pages.Orders;
 using Microsoft.eShopWeb.Web.ViewModels;
 using System.Linq;
 using System.Threading;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.eShopWeb.Web.Features.OrderDetails
 {
-    public class GetOrderDetailsHandler : IRequestHandler<GetOrderDetails, OrderViewModel>
+	public class GetOrderDetailsHandler : IRequestHandler<GetOrderDetails, OrderViewModel>
     {
         private readonly IOrderRepository _orderRepository;
 
