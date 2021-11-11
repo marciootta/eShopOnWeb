@@ -1,29 +1,26 @@
-﻿using MediatR;
+﻿using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 using Microsoft.eShopWeb.ApplicationCore.Specifications;
 using Microsoft.eShopWeb.Web.Pages.Orders;
-using Microsoft.eShopWeb.Web.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Web.Features.MyOrders
+namespace Microsoft.eShopWeb.Web.Services
 {
-	public class GetMyOrdersHandler : IRequestHandler<GetMyOrders, IEnumerable<OrderViewModel>>
-    {
-        private readonly IOrderRepository _orderRepository;
+	public class OrderViewModelService
+	{
+		private readonly IAsyncRepository<Order> _orderRepository;
 
-        public GetMyOrdersHandler(IOrderRepository orderRepository)
-        {
-            _orderRepository = orderRepository;
-        }
+		public OrderViewModelService(IAsyncRepository<Order> orderRepository)
+		{
+			_orderRepository = orderRepository;
+		}
 
-        public async Task<IEnumerable<OrderViewModel>> Handle(GetMyOrders request, CancellationToken cancellationToken)
-        {
-            var specification = new CustomerOrdersWithItemsSpecification(request.UserName);
-            var orders = await _orderRepository.ListAsync(specification, cancellationToken);
-
+		public async Task<IEnumerable<OrderViewModel>> GetOrdersAsync(string userName)
+		{
+			var specification = new CustomerOrdersWithItemsSpecification(userName);
+			var orders = await _orderRepository.ListAsync(specification);
             return orders.Select(o => new OrderViewModel
             {
                 OrderDate = o.OrderDate,
@@ -40,5 +37,5 @@ namespace Microsoft.eShopWeb.Web.Features.MyOrders
                 Total = o.Total()
             });
         }
-    }
+	}
 }
