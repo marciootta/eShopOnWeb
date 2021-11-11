@@ -15,9 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\OrderController.cs" />
-    <Compile Remove="Features\MyOrders\GetMyOrders.cs" />
-    <Compile Remove="Features\MyOrders\GetMyOrdersHandler.cs" />
     <Compile Remove="Pages\Admin\Index.cshtml.cs" />
   </ItemGroup>
 
@@ -53,7 +50,6 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\MyOrders\" />
     <Folder Include="wwwroot\fonts\" />
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>

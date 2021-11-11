@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.eShopWeb.Web.ViewModels
 {
-	public class OrderViewModel
+    public class OrderViewModel
     {
         private const string DEFAULT_STATUS = "Pending";
 
