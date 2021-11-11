@@ -2,7 +2,7 @@
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Web.Services
+namespace Microsoft.eShopWeb.Web.Extensions
 {
     public static class EmailSenderExtensions
     {

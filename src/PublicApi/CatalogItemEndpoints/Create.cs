@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.eShopWeb.ApplicationCore.Entities;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+using Microsoft.eShopWeb.Shared.Authorization;
 using Swashbuckle.AspNetCore.Annotations;
 using System.IO;
 using System.Threading;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 namespace Microsoft.eShopWeb.PublicApi.CatalogItemEndpoints
 {
 
-    [Authorize(Roles = BlazorShared.Authorization.Constants.Roles.ADMINISTRATORS, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(Roles = Constants.Roles.ADMINISTRATORS, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class Create : BaseAsyncEndpoint
         .WithRequest<CreateCatalogItemRequest>
         .WithResponse<CreateCatalogItemResponse>

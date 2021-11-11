@@ -1,4 +1,4 @@
-﻿namespace BlazorShared
+﻿namespace Microsoft.eShopWeb.Shared
 {
     public class BaseUrlConfiguration
     {

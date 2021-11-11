@@ -1,4 +1,4 @@
-﻿namespace BlazorShared.Authorization
+﻿namespace Microsoft.eShopWeb.Shared.Authorization
 {
     public static class Constants
     {

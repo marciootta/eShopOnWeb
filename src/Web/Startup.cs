@@ -1,6 +1,4 @@
 ﻿using Ardalis.ListStartupServices;
- 
-using BlazorShared;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
@@ -13,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 using Microsoft.eShopWeb.Infrastructure.Data;
 using Microsoft.eShopWeb.Infrastructure.Identity;
+using Microsoft.eShopWeb.Shared;
 using Microsoft.eShopWeb.Web.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -144,15 +143,17 @@ namespace Microsoft.eShopWeb.Web
                 config.Path = "/allservices";
             });
 
-            
+
             var baseUrlConfig = new BaseUrlConfiguration();
             Configuration.Bind(BaseUrlConfiguration.CONFIG_NAME, baseUrlConfig);
+
             services.AddScoped<BaseUrlConfiguration>(sp => baseUrlConfig);
-            // Blazor Admin Required Services for Prerendering
-            services.AddScoped<HttpClient>(s => new HttpClient
-            {
-                BaseAddress = new Uri(baseUrlConfig.WebBase)
-            });
+
+            //// Blazor Admin Required Services for Prerendering
+            //services.AddScoped<HttpClient>(s => new HttpClient
+            //{
+            //    BaseAddress = new Uri(baseUrlConfig.WebBase)
+            //});
 
             // add blazor services
             //services.AddBlazoredLocalStorage();

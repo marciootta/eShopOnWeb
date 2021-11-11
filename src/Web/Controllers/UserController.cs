@@ -1,7 +1,7 @@
-﻿using BlazorShared.Authorization;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+using Microsoft.eShopWeb.Shared.Authorization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;

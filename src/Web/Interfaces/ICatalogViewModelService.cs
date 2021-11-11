@@ -3,7 +3,7 @@ using Microsoft.eShopWeb.Web.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Web.Services
+namespace Microsoft.eShopWeb.Web.Interfaces
 {
     public interface ICatalogViewModelService
     {
