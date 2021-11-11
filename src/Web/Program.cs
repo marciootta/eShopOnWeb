@@ -23,12 +23,12 @@ namespace Microsoft.eShopWeb.Web
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
                 try
                 {
-                    var catalogContext = services.GetRequiredService<CatalogContext>();
-                    await CatalogContextSeed.SeedAsync(catalogContext, loggerFactory);
+                    var catalogContext = services.GetRequiredService<ContextoAplicacao>();
+                    await AplicacaoSeed.SeedAsync(catalogContext, loggerFactory);
 
-                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    var userManager = services.GetRequiredService<UserManager<Usuario>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                    await AppIdentityDbContextSeed.SeedAsync(userManager, roleManager);
+                    await AppIdentitySeed.SeedAsync(userManager, roleManager);
                 }
                 catch (Exception ex)
                 {

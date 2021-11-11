@@ -13,9 +13,9 @@ namespace Microsoft.eShopWeb.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<Usuario> _userManager;
 
-        public ConfirmEmailModel(UserManager<ApplicationUser> userManager)
+        public ConfirmEmailModel(UserManager<Usuario> userManager)
         {
             _userManager = userManager;
         }
@@ -27,7 +27,7 @@ namespace Microsoft.eShopWeb.Web.Areas.Identity.Pages.Account
                 return RedirectToPage("/Index");
             }
 
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _userManager.FindByIdAsync( userId);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{userId}'.");

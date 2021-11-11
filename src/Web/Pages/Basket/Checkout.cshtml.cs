@@ -20,7 +20,7 @@ namespace Microsoft.eShopWeb.Web.Pages.Basket
     public class CheckoutModel : PageModel
     {
         private readonly IBasketService _basketService;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly SignInManager<Usuario> _signInManager;
         private readonly IOrderService _orderService;
         private string _username = null;
         private readonly IBasketViewModelService _basketViewModelService;
@@ -28,7 +28,7 @@ namespace Microsoft.eShopWeb.Web.Pages.Basket
 
         public CheckoutModel(IBasketService basketService,
             IBasketViewModelService basketViewModelService,
-            SignInManager<ApplicationUser> signInManager,
+            SignInManager<Usuario> signInManager,
             IOrderService orderService,
             IAppLogger<CheckoutModel> logger)
         {

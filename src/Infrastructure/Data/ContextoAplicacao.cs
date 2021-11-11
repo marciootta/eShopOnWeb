@@ -1,15 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.eShopWeb.ApplicationCore.Entities;
 using Microsoft.eShopWeb.ApplicationCore.Entities.BasketAggregate;
 using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
+using Microsoft.eShopWeb.Infrastructure.Identity;
+using System;
 using System.Reflection;
 
 namespace Microsoft.eShopWeb.Infrastructure.Data
 {
 
-    public class CatalogContext : DbContext
+    public class ContextoAplicacao : IdentityDbContext<Usuario>
     {
-        public CatalogContext(DbContextOptions<CatalogContext> options) : base(options)
+        public ContextoAplicacao(DbContextOptions<ContextoAplicacao> options) : base(options)
         {
         }
 

@@ -18,11 +18,11 @@ namespace Microsoft.eShopWeb.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly SignInManager<Usuario> _signInManager;
         private readonly ILogger<LoginModel> _logger;
         private readonly IBasketService _basketService;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger, IBasketService basketService)
+        public LoginModel(SignInManager<Usuario> signInManager, ILogger<LoginModel> logger, IBasketService basketService)
         {
             _signInManager = signInManager;
             _logger = logger;
@@ -95,6 +95,11 @@ namespace Microsoft.eShopWeb.Web.Areas.Identity.Pages.Account
                 {
                     _logger.LogWarning("User account locked out.");
                     return RedirectToPage("./Lockout");
+                }
+                if (result.IsNotAllowed)
+                {
+                    _logger.LogWarning("Requer confirmação de e-mail.");
+                    return Page();
                 }
                 else
                 {

@@ -51,11 +51,11 @@ namespace Microsoft.eShopWeb.PublicApi
 
         private void ConfigureInMemoryDatabases(IServiceCollection services)
         {
-            services.AddDbContext<CatalogContext>(c =>
+            services.AddDbContext<ContextoAplicacao>(c =>
                 c.UseInMemoryDatabase("Catalog"));
 
-            services.AddDbContext<AppIdentityDbContext>(options =>
-                options.UseInMemoryDatabase("Identity"));
+            //services.AddDbContext<AppIdentityDbContext>(options =>
+            //    options.UseInMemoryDatabase("Identity"));
 
             ConfigureServices(services);
         }
@@ -65,12 +65,12 @@ namespace Microsoft.eShopWeb.PublicApi
             // use real database
             // Requires LocalDB which can be installed with SQL Server Express 2016
             // https://www.microsoft.com/en-us/download/details.aspx?id=54284
-            services.AddDbContext<CatalogContext>(c =>
+            services.AddDbContext<ContextoAplicacao>(c =>
                 c.UseSqlServer(Configuration.GetConnectionString("CatalogConnection")));
 
             // Add Identity DbContext
-            services.AddDbContext<AppIdentityDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+            //services.AddDbContext<AppIdentityDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("CatalogConnection")));
 
             ConfigureServices(services);
         }
@@ -84,8 +84,8 @@ namespace Microsoft.eShopWeb.PublicApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                    .AddEntityFrameworkStores<AppIdentityDbContext>()
+            services.AddIdentity<Usuario, IdentityRole>()
+                    .AddEntityFrameworkStores<ContextoAplicacao>()
                     .AddDefaultTokenProviders();
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));

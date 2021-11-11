@@ -59,12 +59,12 @@ namespace Microsoft.eShopWeb.Web
         private void ConfigureInMemoryDatabases(IServiceCollection services)
         {
             // use in-memory database
-            services.AddDbContext<CatalogContext>(c =>
+            services.AddDbContext<ContextoAplicacao>(c =>
                 c.UseInMemoryDatabase("Catalog"));
 
-            // Add Identity DbContext
-            services.AddDbContext<AppIdentityDbContext>(options =>
-                options.UseInMemoryDatabase("Identity"));
+            //// Add Identity DbContext
+            //services.AddDbContext<AppIdentityDbContext>(options =>
+            //    options.UseInMemoryDatabase("Identity"));
 
             ConfigureServices(services);
         }
@@ -74,12 +74,12 @@ namespace Microsoft.eShopWeb.Web
             // use real database
             // Requires LocalDB which can be installed with SQL Server Express 2016
             // https://www.microsoft.com/en-us/download/details.aspx?id=54284
-            services.AddDbContext<CatalogContext>(c =>
+            services.AddDbContext<ContextoAplicacao>(c =>
                 c.UseSqlServer(Configuration.GetConnectionString("CatalogConnection")));
 
-            // Add Identity DbContext
-            services.AddDbContext<AppIdentityDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+            //// Add Identity DbContext -- coloquei tudo junto
+            //services.AddDbContext<AppIdentityDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("CatalogConnection")));
 
             ConfigureServices(services);
         }
@@ -104,9 +104,9 @@ namespace Microsoft.eShopWeb.Web
                     options.Cookie.SameSite = SameSiteMode.Lax;
                 });
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                       .AddDefaultUI()
-                       .AddEntityFrameworkStores<AppIdentityDbContext>()
+            services.AddIdentity<Usuario, IdentityRole>(o=>o.SignIn.RequireConfirmedAccount = false)
+                       //.AddDefaultUI()
+                       .AddEntityFrameworkStores<ContextoAplicacao>()
                                        .AddDefaultTokenProviders();
 
             services.AddScoped<ITokenClaimsService, IdentityTokenClaimService>();
@@ -120,6 +120,8 @@ namespace Microsoft.eShopWeb.Web
             {
                 // Replace the type and the name used to refer to it with your own
                 // IOutboundParameterTransformer implementation
+                // Esse aqui transforma uma action ou controller de CamelCase
+                // para hifen, exemplo, uma action com nome MyAccount terá a rota my-account
                 options.ConstraintMap["slugify"] = typeof(SlugifyParameterTransformer);
             });
             services.AddMvc(options =>

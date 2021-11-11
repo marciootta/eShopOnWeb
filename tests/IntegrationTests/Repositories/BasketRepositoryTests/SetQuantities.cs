@@ -12,16 +12,16 @@ namespace Microsoft.eShopWeb.IntegrationTests.Repositories.BasketRepositoryTests
 {
     public class SetQuantities
     {
-        private readonly CatalogContext _catalogContext;
+        private readonly ContextoAplicacao _catalogContext;
         private readonly IAsyncRepository<Basket> _basketRepository;
         private readonly BasketBuilder BasketBuilder = new BasketBuilder();
 
         public SetQuantities()
         {
-            var dbOptions = new DbContextOptionsBuilder<CatalogContext>()
+            var dbOptions = new DbContextOptionsBuilder<ContextoAplicacao>()
                 .UseInMemoryDatabase(databaseName: "TestCatalog")
                 .Options;
-            _catalogContext = new CatalogContext(dbOptions);
+            _catalogContext = new ContextoAplicacao(dbOptions);
             _basketRepository = new EfRepository<Basket>(_catalogContext);
         }
 

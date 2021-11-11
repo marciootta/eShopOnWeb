@@ -16,13 +16,13 @@ namespace Microsoft.eShopWeb.Web.Pages.Basket
     public class IndexModel : PageModel
     {
         private readonly IBasketService _basketService;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly SignInManager<Usuario> _signInManager;
         private string _username = null;
         private readonly IBasketViewModelService _basketViewModelService;
 
         public IndexModel(IBasketService basketService,
             IBasketViewModelService basketViewModelService,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<Usuario> signInManager)
         {
             _basketService = basketService;
             _signInManager = signInManager;

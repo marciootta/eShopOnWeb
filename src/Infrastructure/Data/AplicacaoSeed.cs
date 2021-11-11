@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Microsoft.eShopWeb.Infrastructure.Data
 {
-    public class CatalogContextSeed
+    public class AplicacaoSeed
     {
-        public static async Task SeedAsync(CatalogContext catalogContext,
+        public static async Task SeedAsync(ContextoAplicacao catalogContext,
             ILoggerFactory loggerFactory, int? retry = 0)
         {
             int retryForAvailability = retry.Value;
@@ -46,7 +46,7 @@ namespace Microsoft.eShopWeb.Infrastructure.Data
                 if (retryForAvailability < 10)
                 {
                     retryForAvailability++;
-                    var log = loggerFactory.CreateLogger<CatalogContextSeed>();
+                    var log = loggerFactory.CreateLogger<AplicacaoSeed>();
                     log.LogError(ex.Message);
                     await SeedAsync(catalogContext, loggerFactory, retryForAvailability);
                 }

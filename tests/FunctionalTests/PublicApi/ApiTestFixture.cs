@@ -28,17 +28,17 @@ namespace Microsoft.eShopWeb.FunctionalTests.PublicApi
 
                 // Add a database context (ApplicationDbContext) using an in-memory 
                 // database for testing.
-                services.AddDbContext<CatalogContext>(options =>
+                services.AddDbContext<ContextoAplicacao>(options =>
                 {
                     options.UseInMemoryDatabase("InMemoryDbForTesting");
                     options.UseInternalServiceProvider(provider);
                 });
 
-                services.AddDbContext<AppIdentityDbContext>(options =>
-                {
-                    options.UseInMemoryDatabase("Identity");
-                    options.UseInternalServiceProvider(provider);
-                });
+                //services.AddDbContext<AppIdentityDbContext>(options =>
+                //{
+                //    options.UseInMemoryDatabase("Identity");
+                //    options.UseInternalServiceProvider(provider);
+                //});
 
                 // Build the service provider.
                 var sp = services.BuildServiceProvider();
@@ -48,7 +48,7 @@ namespace Microsoft.eShopWeb.FunctionalTests.PublicApi
                 using (var scope = sp.CreateScope())
                 {
                     var scopedServices = scope.ServiceProvider;
-                    var db = scopedServices.GetRequiredService<CatalogContext>();
+                    var db = scopedServices.GetRequiredService<ContextoAplicacao>();
                     var loggerFactory = scopedServices.GetRequiredService<ILoggerFactory>();
 
                     var logger = scopedServices
@@ -60,12 +60,12 @@ namespace Microsoft.eShopWeb.FunctionalTests.PublicApi
                     try
                     {
                         // Seed the database with test data.
-                        CatalogContextSeed.SeedAsync(db, loggerFactory).Wait();
+                        AplicacaoSeed.SeedAsync(db, loggerFactory).Wait();
 
                         // seed sample user data
-                        var userManager = scopedServices.GetRequiredService<UserManager<ApplicationUser>>();
+                        var userManager = scopedServices.GetRequiredService<UserManager<Usuario>>();
                         var roleManager = scopedServices.GetRequiredService<RoleManager<IdentityRole>>();
-                        AppIdentityDbContextSeed.SeedAsync(userManager, roleManager).Wait();
+                        AppIdentitySeed.SeedAsync(userManager, roleManager).Wait();
                     }
                     catch (Exception ex)
                     {

@@ -10,17 +10,17 @@ namespace Microsoft.eShopWeb.IntegrationTests.Repositories.OrderRepositoryTests
 {
     public class GetById
     {
-        private readonly CatalogContext _catalogContext;
+        private readonly ContextoAplicacao _catalogContext;
         private readonly OrderRepository _orderRepository;
         private OrderBuilder OrderBuilder { get; } = new OrderBuilder();
         private readonly ITestOutputHelper _output;
         public GetById(ITestOutputHelper output)
         {
             _output = output;
-            var dbOptions = new DbContextOptionsBuilder<CatalogContext>()
+            var dbOptions = new DbContextOptionsBuilder<ContextoAplicacao>()
                 .UseInMemoryDatabase(databaseName: "TestCatalog")
                 .Options;
-            _catalogContext = new CatalogContext(dbOptions);
+            _catalogContext = new ContextoAplicacao(dbOptions);
             _orderRepository = new OrderRepository(_catalogContext);
         }
 

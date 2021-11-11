@@ -13,10 +13,10 @@ namespace Microsoft.eShopWeb.PublicApi.AuthEndpoints
         .WithRequest<AuthenticateRequest>
         .WithResponse<AuthenticateResponse>
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly SignInManager<Usuario> _signInManager;
         private readonly ITokenClaimsService _tokenClaimsService;
 
-        public Authenticate(SignInManager<ApplicationUser> signInManager,
+        public Authenticate(SignInManager<Usuario> signInManager,
             ITokenClaimsService tokenClaimsService)
         {
             _signInManager = signInManager;

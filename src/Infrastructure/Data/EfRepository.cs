@@ -17,9 +17,9 @@ namespace Microsoft.eShopWeb.Infrastructure.Data
     /// <typeparam name="T"></typeparam>
     public class EfRepository<T> : IAsyncRepository<T> where T : BaseEntity, IAggregateRoot
     {
-        protected readonly CatalogContext _dbContext;
+        protected readonly ContextoAplicacao _dbContext;
 
-        public EfRepository(CatalogContext dbContext)
+        public EfRepository(ContextoAplicacao dbContext)
         {
             _dbContext = dbContext;
         }

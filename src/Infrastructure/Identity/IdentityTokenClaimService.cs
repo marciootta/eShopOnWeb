@@ -13,9 +13,9 @@ namespace Microsoft.eShopWeb.Infrastructure.Identity
 {
     public class IdentityTokenClaimService : ITokenClaimsService
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<Usuario> _userManager;
 
-        public IdentityTokenClaimService(UserManager<ApplicationUser> userManager)
+        public IdentityTokenClaimService(UserManager<Usuario> userManager)
         {
             _userManager = userManager;
         }
