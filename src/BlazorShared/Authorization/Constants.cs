@@ -1,10 +1,10 @@
 ﻿namespace Microsoft.eShopWeb.Shared.Authorization
 {
-    public static class Constants
-    {
-        public static class Roles
-        {
-            public const string ADMINISTRATORS = "Administrators";
-        }
-    }
+	public static class Constants
+	{
+		public static class Roles
+		{
+			public const string ADMINISTRATORS = "Administrators";
+		}
+	}
 }
