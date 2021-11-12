@@ -2,3 +2,30 @@ Faça agora o mesmo para mostrar os detalhes de uma order quando clicar em Detail
 Veja que no Link ja vem o id da ordem.
 
 Dicas:
+No arquivo index.cshtml, 
+- altere a formatacao do link:
+      Troque   <a class="esh-orders-link" asp-controller="Order" asp-action="Detail" asp-route-orderId="@item.OrderNumber">Detail</a>
+      para     <a class="esh-orders-link" href="./Details/@item.OrderNumber">Detail</a>
+
+
+Crie uma razorpage Details dentro da pasta Orders
+- utilize o html de Views/Order/Details.cshtml
+
+Na pagina Details.cshtml:
+- para obter o id que é passado no link, altere a 1.a linha para
+   @page "{orderId}"
+
+
+No OrderViewModelService:
+- crie um metodo que traz so 1 ordem com os detalhes, passando o
+  userName e orderId. Dica: copie o metodo anterior e, apos gerar a lista, faça isso:
+      var order = ordens.FirstOrDefault(o => o.Id == orderId);
+
+Na DetailsModel:
+- declare uma pública OrderViewModel Order
+- corrija o html para pegar os valores dessa variável.
+- altere o construtor para receber o OrderViewModelService
+- altere o OnGet() para ser assincrono e preencher a variável Order.
+- Dica "professor raimundo":
+    public async Task OnGet(int orderId)
+

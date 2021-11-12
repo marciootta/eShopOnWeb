@@ -41,5 +41,28 @@ namespace Microsoft.eShopWeb.Web.Services
 
             return listaOrderViewModel;
         }
+
+        public async Task<OrderViewModel> GetOrderDetailsForUser(string userName, int orderId)
+        {
+            var orderSpec = new CustomerOrdersWithItemsSpecification(userName);
+            var ordens = (await _orderRepository.ListAsync(orderSpec));
+            var order = ordens.FirstOrDefault(o => o.Id == orderId);
+            return new OrderViewModel
+            {
+                OrderDate = order.OrderDate,
+                OrderItems = order.OrderItems?.Select(oi => new OrderItemViewModel()
+                {
+                    PictureUrl = oi.ItemOrdered.PictureUri,
+                    ProductId = oi.ItemOrdered.CatalogItemId,
+                    ProductName = oi.ItemOrdered.ProductName,
+                    UnitPrice = oi.UnitPrice,
+                    Units = oi.Units
+                }).ToList(),
+                OrderNumber = order.Id,
+                ShippingAddress = order.ShipToAddress,
+                Total = order.Total()
+            };
+             
+        }
     }
 }
