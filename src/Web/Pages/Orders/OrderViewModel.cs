@@ -2,9 +2,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.eShopWeb.Web.ViewModels
+namespace Microsoft.eShopWeb.Web.Pages.Orders
 {
-	public class OrderViewModel
+    public class OrderViewModel
     {
         private const string DEFAULT_STATUS = "Pending";
 

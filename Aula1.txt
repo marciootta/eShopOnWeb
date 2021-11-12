@@ -1,29 +1,85 @@
 Aula1: criando uma pagina para listar orders em razorPages
 Nessa aula vamos apenas converter uma pagina que está em MVC para razorpages.
 
+As razorPages ficam na pasta Pages. É bom criar uma subpasta para cada conjunto
+de páginas. Nesse exemplo vamos criar uma pasta Orders e colocar lá as páginas
+e viewmodel da consulta e detalhe de orders.
+
 no projeto web:
 - crie uma pasta Orders em pages
 - MOVA da pasta viewmodels o orderviewmodel.cs e orderitemviewmodel.cs para ela
 - corrija o namespace dessas classes para Microsoft.eShopWeb.Web.Pages.Orders
 - crie nova razorpage empty  Index.cshtml 
-- copie o conteudo do html da view/order/myorders.cshtml para a index, mantenha 
-  a @page e a @model Microsoft.eShopWeb.Web.Pages.Orders.IndexModel
-- exclua do projeto: a features e a orderController
+- copie o conteudo (exceto a 1.a linha) do cshtml da view/order/myorders.cshtml
+  para a index. Mantenha a @page e a @model Microsoft.eShopWeb.Web.Pages.Orders.IndexModel
 
-Na pagemodel (index.cshtml.cs):
-- 
 
-Crie uma OrderViewModelService.cs
-- crie o metodo public async Task<IEnumerable<OrderViewModel>> GetOrders(string userName)
+Agora vamos criar os métodos de para popular a tela de consulta de orders; 
+para isso precisamos declarar uma variavel publica de Lista de ViewOrder
 
-Em ConfigureWebServices:
+Na classe IndexModel:
+- Crie essa variavel:
+        public IEnumerable<OrderViewModel> Ordens { get; set; } = new List<OrderViewModel>();
+
+
+No onGet vamos preencher essa variável.       
+
+Veja que no ApplicationCore/Services/OrderService só tem o método para Create.
+
+Isso é porque o projeto usa o padrao specification para queries. Veja no arq. 
+ApplicationCore/Specifications/CustomerOrdersWithItemsSpecification.cs como 
+as queries sao montadas.
+
+Como a applicationCore devolve uma lista de Orders e precisamos de uma lista de OrderViewModel,
+vamos criar um serviço na pasta web/services para fazer isso.
+
+Na web/services:
+- Baseando-se no BasketViewModelService, crie uma OrderViewModelService que obtem uma
+  IEnumerable<OrderViewModel>. Chame esse metodo de GetOrdersForUser.
+- dicas: 
+	- receba no construtor da classe o IAsyncRepository<Order> orderRepository
+	- use CustomerOrdersWithItemsSpecification 
+	- use o metodo var orde(await _orderRepository.ListAsync(orderSpec))  para obter a lista 
+	- para fazer o mapping entre a lista retornada e a lista de viewmodels use esse select:
+
+	      var listaOrderViewModel = orders.Select(o => new OrderViewModel
+          {
+                OrderDate = o.OrderDate,
+                OrderItems = o.OrderItems?.Select(oi => new OrderItemViewModel()
+                {
+                    PictureUrl = oi.ItemOrdered.PictureUri,
+                    ProductId = oi.ItemOrdered.CatalogItemId,
+                    ProductName = oi.ItemOrdered.ProductName,
+                    UnitPrice = oi.UnitPrice,
+                    Units = oi.Units
+                }).ToList(),
+                OrderNumber = o.Id,
+                ShippingAddress = o.ShipToAddress,
+                Total = o.Total()
+            });
+
+Vamos precisar usar esse serviço na nossa pageModel, entao para isso registre o serviço no
+metodo em web/configuration/ConfigureWebServices:
 - adicione o servico criado : services.AddScoped<OrderViewModelService>();
 
-Na pagemodel:
-- crie construtor para pegar o OrderViewModelService
+Na pagemodel (index.cshtml.cs):
+- crie construtor e a variavel privada para obter o OrderViewModelService 
 - altere o onGet para async Task
-- chame o getOrdersAsync
+- chame o getOrdersAsync e grave o resultado na Ordens
 
+No index.cshtml:
+- corrija o html, obtendo os dados de Model.Ordens...
+ 
+- exclua (nao apague) do projeto:
+	- pasta Features toda
+	- Controllers/orderController.cs
+	- a pasta views/order
 
-- corrija o html.
-- 
+Altere o menu para chamar a sua pagina em vez do controller
+Na Views/Shared/_loginPartial.cshtml]
+- retire isso: 
+     asp-controller="Order"
+     asp-action="MyOrders" 
+- coloque isso no lugar: href="/Orders/"
+
+- Rode (C.D.V.)

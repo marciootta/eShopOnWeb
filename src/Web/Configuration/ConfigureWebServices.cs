@@ -15,7 +15,7 @@ namespace Microsoft.eShopWeb.Web.Configuration
             services.AddScoped<CatalogItemViewModelService>();
             services.Configure<CatalogSettings>(configuration);
             services.AddScoped<CachedCatalogViewModelService>();
-
+            services.AddScoped<OrderViewModelService>();
             return services;
         }
     }

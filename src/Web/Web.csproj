@@ -9,12 +9,21 @@
 
   <ItemGroup>
     <Compile Remove="Catalog\**" />
+    <Compile Remove="Features\**" />
+    <Compile Remove="Views\Order\**" />
     <Content Remove="Catalog\**" />
+    <Content Remove="Features\**" />
+    <Content Remove="Views\Order\**" />
     <EmbeddedResource Remove="Catalog\**" />
+    <EmbeddedResource Remove="Features\**" />
+    <EmbeddedResource Remove="Views\Order\**" />
     <None Remove="Catalog\**" />
+    <None Remove="Features\**" />
+    <None Remove="Views\Order\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\OrderController.cs" />
     <Compile Remove="Pages\Admin\Index.cshtml.cs" />
   </ItemGroup>
 
