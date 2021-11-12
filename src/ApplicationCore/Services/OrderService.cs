@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.eShopWeb.ApplicationCore.Services
 {
-    public class OrderService : IOrderService
+    public class OrderService 
     {
         private readonly IAsyncRepository<Order> _orderRepository;
         private readonly IUriComposer _uriComposer;

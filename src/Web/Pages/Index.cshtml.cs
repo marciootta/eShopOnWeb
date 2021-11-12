@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.eShopWeb.Web.Interfaces;
+using Microsoft.eShopWeb.Web.Services;
 using Microsoft.eShopWeb.Web.ViewModels;
 using System.Threading.Tasks;
 
@@ -7,9 +7,9 @@ namespace Microsoft.eShopWeb.Web.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ICatalogViewModelService _catalogViewModelService;
+        private readonly CatalogViewModelService _catalogViewModelService;
 
-        public IndexModel(ICatalogViewModelService catalogViewModelService)
+        public IndexModel(CatalogViewModelService catalogViewModelService)
         {
             _catalogViewModelService = catalogViewModelService;
         }

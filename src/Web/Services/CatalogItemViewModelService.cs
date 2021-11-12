@@ -1,12 +1,11 @@
 ﻿using Microsoft.eShopWeb.ApplicationCore.Entities;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
-using Microsoft.eShopWeb.Web.Interfaces;
 using Microsoft.eShopWeb.Web.ViewModels;
 using System.Threading.Tasks;
 
 namespace Microsoft.eShopWeb.Web.Services
 {
-    public class CatalogItemViewModelService : ICatalogItemViewModelService
+    public class CatalogItemViewModelService 
     {
         private readonly IAsyncRepository<CatalogItem> _catalogItemRepository;
 

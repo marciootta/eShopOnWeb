@@ -1,0 +1,13 @@
+Navegar pelo sistema
+- orders
+
+Conhecendo a solution
+- projetos 
+- web:
+	- pastas que ficarao = pages, services (interface eu deletei)
+	- controllers, views, viewmodels, features nao serao utilizados
+	- Configuration: ver configureCoreServices, configureWebServices
+	- extensions: emailsenderExtensions
+- applicationCore
+	- vamos deixar para outra aula.
+

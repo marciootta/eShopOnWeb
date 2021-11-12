@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Microsoft.eShopWeb.Web.Pages.Orders;
+
 using Microsoft.eShopWeb.Web.ViewModels;
 
 namespace Microsoft.eShopWeb.Web.Features.OrderDetails

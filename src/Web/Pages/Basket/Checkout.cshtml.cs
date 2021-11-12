@@ -7,8 +7,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.eShopWeb.ApplicationCore.Entities.OrderAggregate;
 using Microsoft.eShopWeb.ApplicationCore.Exceptions;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+using Microsoft.eShopWeb.ApplicationCore.Services;
 using Microsoft.eShopWeb.Infrastructure.Identity;
-using Microsoft.eShopWeb.Web.Interfaces;
+using Microsoft.eShopWeb.Web.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,17 +20,17 @@ namespace Microsoft.eShopWeb.Web.Pages.Basket
     [Authorize]
     public class CheckoutModel : PageModel
     {
-        private readonly IBasketService _basketService;
+        private readonly BasketService _basketService;
         private readonly SignInManager<Usuario> _signInManager;
-        private readonly IOrderService _orderService;
+        private readonly OrderService _orderService;
         private string _username = null;
-        private readonly IBasketViewModelService _basketViewModelService;
+        private readonly BasketViewModelService _basketViewModelService;
         private readonly IAppLogger<CheckoutModel> _logger;
 
-        public CheckoutModel(IBasketService basketService,
-            IBasketViewModelService basketViewModelService,
+        public CheckoutModel(BasketService basketService,
+            BasketViewModelService basketViewModelService,
             SignInManager<Usuario> signInManager,
-            IOrderService orderService,
+            OrderService orderService,
             IAppLogger<CheckoutModel> logger)
         {
             _basketService = basketService;

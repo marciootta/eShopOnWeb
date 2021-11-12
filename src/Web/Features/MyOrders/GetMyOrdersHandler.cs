@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 using Microsoft.eShopWeb.ApplicationCore.Specifications;
-using Microsoft.eShopWeb.Web.Pages.Orders;
 using Microsoft.eShopWeb.Web.ViewModels;
 using System.Collections.Generic;
 using System.Linq;

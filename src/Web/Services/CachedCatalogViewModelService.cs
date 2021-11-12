@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.eShopWeb.Web.Extensions;
-using Microsoft.eShopWeb.Web.Interfaces;
 using Microsoft.eShopWeb.Web.ViewModels;
 using Microsoft.Extensions.Caching.Memory;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.eShopWeb.Web.Services
 {
-    public class CachedCatalogViewModelService : ICatalogViewModelService
+    public class CachedCatalogViewModelService 
     {
         private readonly IMemoryCache _cache;
         private readonly CatalogViewModelService _catalogViewModelService;

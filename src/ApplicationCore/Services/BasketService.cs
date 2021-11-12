@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.eShopWeb.ApplicationCore.Services
 {
-    public class BasketService : IBasketService
+    public class BasketService 
     {
         private readonly IAsyncRepository<Basket> _basketRepository;
         private readonly IAppLogger<BasketService> _logger;

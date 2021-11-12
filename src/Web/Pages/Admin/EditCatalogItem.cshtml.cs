@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.eShopWeb.ApplicationCore.Constants;
-using Microsoft.eShopWeb.Web.Interfaces;
+using Microsoft.eShopWeb.Web.Services;
 using Microsoft.eShopWeb.Web.ViewModels;
 using System.Threading.Tasks;
 
@@ -11,9 +11,9 @@ namespace Microsoft.eShopWeb.Web.Pages.Admin
     [Authorize(Roles = eShopWeb.Shared.Authorization.Constants.Roles.ADMINISTRATORS)]
     public class EditCatalogItemModel : PageModel
     {
-        private readonly ICatalogItemViewModelService _catalogItemViewModelService;
+        private readonly CatalogItemViewModelService _catalogItemViewModelService;
 
-        public EditCatalogItemModel(ICatalogItemViewModelService catalogItemViewModelService)
+        public EditCatalogItemModel(CatalogItemViewModelService catalogItemViewModelService)
         {
             _catalogItemViewModelService = catalogItemViewModelService;
         }

@@ -2,7 +2,6 @@
 using Microsoft.eShopWeb.ApplicationCore.Entities;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 using Microsoft.eShopWeb.ApplicationCore.Specifications;
-using Microsoft.eShopWeb.Web.Interfaces;
 using Microsoft.eShopWeb.Web.ViewModels;
 using Microsoft.Extensions.Logging;
 using System;
@@ -16,7 +15,7 @@ namespace Microsoft.eShopWeb.Web.Services
     /// This is a UI-specific service so belongs in UI project. It does not contain any business logic and works
     /// with UI-specific types (view models and SelectListItem types).
     /// </summary>
-    public class CatalogViewModelService : ICatalogViewModelService
+    public class CatalogViewModelService 
     {
         private readonly ILogger<CatalogViewModelService> _logger;
         private readonly IAsyncRepository<CatalogItem> _itemRepository;

@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+using Microsoft.eShopWeb.ApplicationCore.Services;
 using Microsoft.eShopWeb.Infrastructure.Identity;
-using Microsoft.eShopWeb.Web.Interfaces;
+using Microsoft.eShopWeb.Web.Services;
 using Microsoft.eShopWeb.Web.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,13 +15,13 @@ namespace Microsoft.eShopWeb.Web.Pages.Basket
 {
     public class IndexModel : PageModel
     {
-        private readonly IBasketService _basketService;
+        private readonly BasketService _basketService;
         private readonly SignInManager<Usuario> _signInManager;
         private string _username = null;
-        private readonly IBasketViewModelService _basketViewModelService;
+        private readonly BasketViewModelService _basketViewModelService;
 
-        public IndexModel(IBasketService basketService,
-            IBasketViewModelService basketViewModelService,
+        public IndexModel(BasketService basketService,
+            BasketViewModelService basketViewModelService,
             SignInManager<Usuario> signInManager)
         {
             _basketService = basketService;

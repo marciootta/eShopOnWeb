@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.eShopWeb.Infrastructure.Identity;
 using Microsoft.Extensions.Logging;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+using Microsoft.eShopWeb.ApplicationCore.Services;
 
 namespace Microsoft.eShopWeb.Web.Areas.Identity.Pages.Account
 {
@@ -20,9 +20,9 @@ namespace Microsoft.eShopWeb.Web.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<Usuario> _signInManager;
         private readonly ILogger<LoginModel> _logger;
-        private readonly IBasketService _basketService;
+        private readonly BasketService _basketService;
 
-        public LoginModel(SignInManager<Usuario> signInManager, ILogger<LoginModel> logger, IBasketService basketService)
+        public LoginModel(SignInManager<Usuario> signInManager, ILogger<LoginModel> logger, BasketService basketService)
         {
             _signInManager = signInManager;
             _logger = logger;

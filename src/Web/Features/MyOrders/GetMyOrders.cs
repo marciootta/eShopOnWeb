@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.eShopWeb.Web.Pages.Orders;
 using Microsoft.eShopWeb.Web.ViewModels;
 using System.Collections.Generic;
 

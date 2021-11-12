@@ -13,8 +13,8 @@ namespace Microsoft.eShopWeb.Web.Configuration
         public static IServiceCollection AddCoreServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
-            services.AddScoped<IBasketService, BasketService>();
-            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<BasketService>();
+            services.AddScoped<OrderService>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddSingleton<IUriComposer>(new UriComposer(configuration.Get<CatalogSettings>()));
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));

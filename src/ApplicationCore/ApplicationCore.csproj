@@ -6,6 +6,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Interfaces\IBasketService.cs" />
+	  <Compile Remove="Interfaces\IOrderService.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Ardalis.GuardClauses" Version="3.0.1" />
 		<PackageReference Include="Ardalis.Specification" Version="4.1.0" />
 		<PackageReference Include="MediatR" Version="9.0.0" />
