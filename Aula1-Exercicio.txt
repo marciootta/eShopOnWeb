@@ -1,0 +1,4 @@
+Faça agora o mesmo para mostrar os detalhes de uma order quando clicar em Details.
+Veja que no Link ja vem o id da ordem.
+
+Dicas:
