@@ -24,12 +24,10 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\OrderController.cs" />
-    <Compile Remove="Pages\Admin\Index.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
-    <Content Remove="Pages\Admin\Index.cshtml" />
   </ItemGroup>
 
 
