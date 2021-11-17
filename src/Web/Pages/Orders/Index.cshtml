@@ -25,7 +25,9 @@
                     <section class="esh-orders-item col-xs-2">$ @Html.DisplayFor(modelItem => item.Total)</section>
                     <section class="esh-orders-item col-xs-2">@Html.DisplayFor(modelItem => item.Status)</section>
                     <section class="esh-orders-item col-xs-1">
-                        <a class="esh-orders-link" href="./Details/@item.OrderNumber">Detail</a>
+                        @*<a class="esh-orders-link" href="./Details/@item.OrderNumber">Detail</a>
+                        *@
+                        <a class="esh-orders-link" asp-page="./Details" asp-route-orderId="@item.OrderNumber" >Detail</a>
                     </section>
                     <section class="esh-orders-item col-xs-1">
                         @if (item.Status.ToLower() == "submitted")
