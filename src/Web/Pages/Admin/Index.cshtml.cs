@@ -22,12 +22,15 @@ namespace Microsoft.eShopWeb.Web.Pages.Admin
         {
            _catalogItemViewModelService = catalogItemViewModelService;
         }
-        public IEnumerable<CatalogAdminViewModel> Lista = new List<CatalogAdminViewModel>();
+
+        public IEnumerable<CatalogAdminViewModel> Lista = new List<CatalogAdminViewModel>();                                        // baixadodofinish
 
         public async Task OnGet()
         {
             Lista = await _catalogItemViewModelService.GetAllCatalogItems();
         }
+
+
         public  IActionResult OnPostDelete(int id)
         {
              
