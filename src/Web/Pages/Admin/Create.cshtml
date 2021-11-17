@@ -1,0 +1,39 @@
+﻿@page
+@model Microsoft.eShopWeb.Web.Pages.Admin.CreateModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <form method="post">
+            <img class="esh-catalog-thumbnail" src="@Model.CatalogModel.PictureUri" />
+                <div class="form-group">
+                    <label asp-for="CatalogModel.Name"></label>
+                    <input asp-for="CatalogModel.Name" class="form-control" />
+                    <span asp-validation-for="CatalogModel.Name"></span>
+                </div>
+                <label class="esh-catalog-label" data-title="brand">
+                    <select asp-for="@Model.CatalogModel.brand" asp-items="@Model.CatalogModel.Brands" class="esh-catalog-filter"></select>
+                </label>
+                <div class="form-group">
+                    <label asp-for="CatalogModel.Price"></label>
+                    <input asp-for="CatalogModel.Price" class="form-control" />
+                    <span asp-validation-for="CatalogModel.Price"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CatalogModel.PictureUri" />
+                    <input asp-for="CatalogModel.PictureUri" class="form-control" />
+                    <span asp-validation-for="CatalogModel.PictureUri" class="form-control" />
+                </div>
+
+                <div class="col-md-2">
+                    <input type="submit" value="Save" class="esh-catalog-button" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
