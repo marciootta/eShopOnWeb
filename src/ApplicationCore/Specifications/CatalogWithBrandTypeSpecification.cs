@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Microsoft.eShopWeb.ApplicationCore.Specifications
 {
-    public class CatalogFilterIncludeSpecification : Specification<CatalogItem>
+    public class CatalogWithBrandTypeSpecification : Specification<CatalogItem>
     {
-        public CatalogFilterIncludeSpecification(int? brandId, int? typeId)
+        public CatalogWithBrandTypeSpecification(int? brandId, int? typeId)
         {
             Query.Where(i => (!brandId.HasValue || i.CatalogBrandId == brandId) &&
                 (!typeId.HasValue || i.CatalogTypeId == typeId));
