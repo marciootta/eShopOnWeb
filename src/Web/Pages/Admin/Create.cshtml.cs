@@ -17,30 +17,30 @@ namespace Microsoft.eShopWeb.Web.Pages.Admin
         }
 
         [BindProperty]
-        public CatalogItemCreateViewModel Item { get; set; } = new CatalogItemCreateViewModel();
+        public CatalogItemCreateViewModel Modelo { get; set; } = new CatalogItemCreateViewModel();
 
         public async Task OnGet()
         {
-            await PreencheCombos(Item);
+            await PreencheCombos(Modelo);
         }
 
         private async Task PreencheCombos(CatalogItemCreateViewModel item)
         {
-            Item.Brands = (await _catalogViewModelService.GetBrands()).ToList();
-            Item.Types = (await _catalogViewModelService.GetTypes()).ToList();
+            Modelo.Brands = (await _catalogViewModelService.GetBrands()).ToList();
+            Modelo.Types = (await _catalogViewModelService.GetTypes()).ToList();
         }
 
         public async Task<IActionResult> OnPost()
         {
             if (ModelState.IsValid)
             {
-                await _catalogViewModelService.CreateCatalogItem(Item);
+                await _catalogViewModelService.CreateCatalogItem(Modelo);
                 return Redirect("/Admin/Index");
             }
             else
             {
                 ModelState.AddModelError(string.Empty, "Ocorreu um erro ao inserir.");
-                await PreencheCombos(Item);
+                await PreencheCombos(Modelo);
                 return Page();
             } 
         }
