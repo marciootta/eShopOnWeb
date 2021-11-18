@@ -2,6 +2,7 @@
 using Microsoft.eShopWeb.ApplicationCore.Entities;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 using Microsoft.eShopWeb.ApplicationCore.Specifications;
+using Microsoft.eShopWeb.Web.Pages.Admin;
 using Microsoft.eShopWeb.Web.ViewModels;
 using Microsoft.Extensions.Logging;
 using System;
@@ -75,6 +76,20 @@ namespace Microsoft.eShopWeb.Web.Services
             vm.PaginationInfo.Previous = (vm.PaginationInfo.ActualPage == 0) ? "is-disabled" : "";
 
             return vm;
+        }
+
+ 
+
+        public async Task CreateCatalogItem(CatalogItemCreateViewModel viewModel)
+        {
+            CatalogItem newCatalog = new CatalogItem
+                (viewModel.CatalogTypeId,
+                 viewModel.CatalogBrandId,
+                 viewModel.Description,
+                 viewModel.Name,
+                 viewModel.Price,
+                 viewModel.PictureUri);
+            await _itemRepository.AddAsync(newCatalog);
         }
 
         public async Task<IEnumerable<SelectListItem>> GetBrands()

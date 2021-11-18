@@ -5,24 +5,32 @@
     <div class="row">
         <div class="col-md-8">
             <form method="post">
-            <img class="esh-catalog-thumbnail" src="@Model.CatalogModel.PictureUri" />
+            <img class="esh-catalog-thumbnail" src="@Model.Item.PictureUri" />
                 <div class="form-group">
-                    <label asp-for="CatalogModel.Name"></label>
-                    <input asp-for="CatalogModel.Name" class="form-control" />
-                    <span asp-validation-for="CatalogModel.Name"></span>
-                </div>
-                <label class="esh-catalog-label" data-title="brand">
-                    <select asp-for="@Model.CatalogModel.brand" asp-items="@Model.CatalogModel.Brands" class="esh-catalog-filter"></select>
-                </label>
-                <div class="form-group">
-                    <label asp-for="CatalogModel.Price"></label>
-                    <input asp-for="CatalogModel.Price" class="form-control" />
-                    <span asp-validation-for="CatalogModel.Price"></span>
+                    <label asp-for="Item.Name"></label>
+                    <input asp-for="Item.Name" class="form-control" />
+                    <span asp-validation-for="Item.Name"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="CatalogModel.PictureUri" />
-                    <input asp-for="CatalogModel.PictureUri" class="form-control" />
-                    <span asp-validation-for="CatalogModel.PictureUri" class="form-control" />
+                    <label asp-for="@Model.Item.CatalogBrandId"></label>
+                    <select asp-for="@Model.Item.CatalogBrandId" asp-items="@Model.Item.Brands" class="form-control"></select>
+                    <span asp-validation-for="Item.CatalogBrandId"></span>
+                    </div>
+                <div class="form-group">    
+                    <label asp-for="@Model.Item.CatalogTypeId" data-title="type"></label>
+                    <select asp-for="@Model.Item.CatalogTypeId" asp-items="@Model.Item.Types" class="form-control"></select>
+                    <span asp-validation-for="Item.CatalogTypeId"></span>
+                </div>
+                 
+                <div class="form-group">
+                    <label asp-for="@Model.Item.Price"></label>
+                    <input asp-for="Item.Price" class="form-control" />
+                    <span asp-validation-for="Item.Price"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.Item.PictureUri"></label>
+                    <input asp-for="Item.PictureUri" class="form-control" />
+                    <span asp-validation-for="Item.PictureUri"></span>
                 </div>
 
                 <div class="col-md-2">
