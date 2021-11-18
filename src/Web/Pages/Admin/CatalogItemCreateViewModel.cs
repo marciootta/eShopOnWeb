@@ -8,7 +8,9 @@ namespace Microsoft.eShopWeb.Web.Pages.Admin
     {
         [Required(ErrorMessage ="Nome é obrigatório")]
         public string Name { get; set; }
-        public string Description { get; private set; }
+
+        [Required(ErrorMessage = "Description é obrigatório")]
+        public string Description { get;  set; }
 
         [Display(Name = "Tipo")]
         [Required(ErrorMessage = "Type é obrigatório")]

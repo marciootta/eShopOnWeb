@@ -22,11 +22,10 @@ namespace Microsoft.eShopWeb.ApplicationCore.Entities
             decimal price,
             string pictureUri)
         {
+            Guard.Against.PictureUriErrada(pictureUri);
             CatalogTypeId = catalogTypeId;
             CatalogBrandId = catalogBrandId;
-            Description = description;
-            Name = name;
-            Price = price;
+            UpdateDetails(name,description,price);
             PictureUri = pictureUri;
         }
 
