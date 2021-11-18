@@ -44,7 +44,7 @@ namespace Microsoft.eShopWeb.Web.Services
 
         public async Task<OrderViewModel> GetOrderDetailsForUser(string userName, int orderId)
         {
-            var orderSpec = new CustomerOrdersWithItemsSpecification(userName);
+            var orderSpec = new CustomerOrdersWithItemsSpecification(userName);                                     // aula3finish
             var ordens = (await _orderRepository.ListAsync(orderSpec));
             var order = ordens.FirstOrDefault(o => o.Id == orderId);
             return new OrderViewModel
